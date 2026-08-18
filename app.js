@@ -11,6 +11,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
+// Initialize OneSignal
 window.OneSignalDeferred = window.OneSignalDeferred || [];
 OneSignalDeferred.push(async function(OneSignal) {
   await OneSignal.init({
@@ -19,6 +20,7 @@ OneSignalDeferred.push(async function(OneSignal) {
   });
 });
 
+// Button listener to request notification permission
 document.getElementById('notify-btn').addEventListener('click', function() {
   window.OneSignalDeferred.push(function(OneSignal) {
     OneSignal.Notifications.requestPermission();
